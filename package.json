@@ -5,6 +5,10 @@
   "main": "index.js",
   "author": "aaronisme",
   "license": "MIT",
+  "scripts": {
+    "build": "NODE_ENV=production node_modules/.bin/webpack -p",
+    "start": ""
+  },
   "dependencies": {
     "babel-cli": "^6.23.0",
     "babel-polyfill": "^6.23.0",
