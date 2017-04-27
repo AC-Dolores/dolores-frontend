@@ -30,7 +30,9 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 module.exports = {
-  entry: path.join(__dirname, 'src', 'app-client.js'),
+  entry: {
+   'app': path.join(__dirname, 'src', 'app-client.js'),
+  },
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
