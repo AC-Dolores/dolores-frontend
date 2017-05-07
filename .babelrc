@@ -1,3 +1,14 @@
 {
-    "presets": ["react", "env", "stage-0"]
+  "presets": [
+    "react",
+    ["es2015", {"modules": false}],
+    "stage-0"
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        "transform-es2015-modules-commonjs"
+      ]
+    }
+  }
 }
