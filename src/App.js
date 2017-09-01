@@ -1,14 +1,13 @@
 import React from 'react';
+import Header from './components/Header'
 import { Link, Route } from 'react-router-dom'
-import News from  './components/News';
+import Topics from  './components/News';
 
 const App = () => {
   return <div>
-    <nav>
-      <Link to="/news">News</Link>
-    </nav>
+    <Header />
     <div>
-      <Route path="/news" component={News} />
+      <Route path="/topics" component={Topics} />
     </div>
   </div>;
 }
