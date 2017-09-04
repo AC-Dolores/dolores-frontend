@@ -31,7 +31,7 @@ if (process.env.NODE_ENV === 'production') {
 
 module.exports = {
   entry: {
-   'app': path.join(__dirname, 'src', 'app-client.js'),
+    'app': path.join(__dirname, 'src', 'app-client.js'),
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -40,8 +40,12 @@ module.exports = {
   devtool,
   module: {
     loaders: [{
-      test: path.join(__dirname, 'src'),
+      test: /\.js$/,
+      exclude: /(node-modules)/,
       loader: ['babel-loader'],
+    }, {
+      test: /\.scss$/,
+      loaders: ['style-loader', 'css-loader', 'sass-loader']
     }],
   },
   plugins,
