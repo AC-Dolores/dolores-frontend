@@ -1,0 +1,42 @@
+html {
+  height: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0px;
+  min-height: 100%;
+}
+
+body * {
+  box-sizing: border-box;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  > iframe {
+    display: none;
+  }
+}
+
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+  outline: 0;
+}
+
+hr {
+  margin: 0;
+}
