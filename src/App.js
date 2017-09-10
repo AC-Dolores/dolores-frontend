@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './components/Header/Header'
 import { Route } from 'react-router-dom'
-import Topics from  './components/News';
+import Topics from  './components/Topic/Topics';
 
 const App = () => {
   return <div>
