@@ -7,4 +7,4 @@ describe('test', () => {
     const warpper = shallow(<App />);
     expect(warpper.find('.test').length).toEqual(1);
   })
-})
+});
