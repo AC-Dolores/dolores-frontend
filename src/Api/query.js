@@ -7,3 +7,4 @@ export const getTopics = (lastCursor = 0) => {
   const path = `${READHUBENDPOINT}/topic` + params;
   return api(path).then(resp => resp.data.map(item => extractTopicData(item)))
 };
+
