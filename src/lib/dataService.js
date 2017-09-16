@@ -4,3 +4,13 @@ export const extractTopicData = (data) => ({
   summary: data.summary || '',
   order: data.order || ''
 });
+
+export const extractNewsData = (data) => ({
+  id: data.id || '',
+  source: data.siteName || '',
+  summary: data.summary ||'',
+  title: data.title || '',
+  url: data.url || '',
+  editor: data.authorName || ''
+});
+

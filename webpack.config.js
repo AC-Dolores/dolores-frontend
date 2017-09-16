@@ -6,7 +6,6 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const extractSass = new ExtractTextPlugin({
   filename: "style.css",
   allChunks: true,
-  disable: process.env.NODE_ENV === "development"
 });
 
 let plugins = [

@@ -1,10 +1,18 @@
 import api from './api';
 import { READHUBENDPOINT } from '../config';
-import { extractTopicData } from '../lib/dataService'
+import { extractTopicData, extractNewsData } from '../lib/dataService'
 
-export const getTopics = (lastCursor = 0) => {
-  const params = lastCursor ? `?lastCursor=${lastCursor}&pageSize=10` : `?pageSize=10`;
-  const path = `${READHUBENDPOINT}/topic` + params;
-  return api(path).then(resp => resp.data.map(item => extractTopicData(item)))
+const dataServiceMap = {
+  'topic' : extractTopicData,
+  'news': extractNewsData
 };
 
+export const getItems =(channel) => (lastCursor = 0) => {
+  const params = lastCursor ? `?lastCursor=${lastCursor}&pageSize=10` : `?pageSize=10`;
+  const path = `${READHUBENDPOINT}/${channel}` + params;
+  return api(path).then(resp => resp.data.map(item => { return dataServiceMap[channel](item)}))
+};
+
+export const getTopics = getItems("topic");
+export const getNews = getItems('news');
+export const getTechNews = getItems('technews');
