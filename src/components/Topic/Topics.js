@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ScrollableComponent from '../Common/ScrollableComponent/ScrollableComponent'
+import ScrollableComponent from '../Common/ScrollableComponent';
 import {getTopics} from '../../Api/query';
 import TopicItem from './TopicItem/TopicItem'
 import './Topics.scss'
