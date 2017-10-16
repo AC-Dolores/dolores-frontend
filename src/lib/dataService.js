@@ -14,3 +14,12 @@ export const extractNewsData = (data) => ({
   editor: data.authorName || ''
 });
 
+export const extractTechData = (data) => ({
+  id: data.id || '',
+  source: data.siteName || '',
+  summary: data.summary ||'',
+  title: data.title || '',
+  url: data.url || '',
+  editor: data.authorName || ''
+});
+

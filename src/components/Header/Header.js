@@ -9,7 +9,7 @@ export  default () => <header>
       <div className="link-box">
         <Link to="/topics" className="link">热门话题</Link>
         <Link to="/news" className="link">科技动态</Link>
-        <Link to="/news" className="link" >开发者动态</Link>
+        <Link to="/technews" className="link" >开发者动态</Link>
       </div>
     </nav>
   </div>

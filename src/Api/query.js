@@ -1,10 +1,11 @@
 import api from './api';
 import { READHUBENDPOINT } from '../config';
-import { extractTopicData, extractNewsData } from '../lib/dataService'
+import { extractTopicData, extractNewsData, extractTechData } from '../lib/dataService'
 
 const dataServiceMap = {
   'topic' : extractTopicData,
-  'news': extractNewsData
+  'news': extractNewsData,
+  'technews': extractTechData
 };
 
 export const getItems =(channel) => (lastCursor = 0) => {
