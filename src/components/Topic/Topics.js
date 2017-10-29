@@ -31,7 +31,7 @@ class Topics extends Component {
     return (
     <div className="main">
       <div className="content">
-        <ScrollableComponent scrollToBottom={this.fetchData}>
+        <ScrollableComponent scrollToBottom={this.fetchData} clickAddMore={this.fetchData}>
           {this.state.topics.map((item, index) => <TopicItem key={`topic-${index}`} topicItem={item}/>)}
         </ScrollableComponent>
       </div>

@@ -41,7 +41,7 @@ class ScrollableComponent extends Component {
     return (
       <div>
         { this.props.children }
-        { this.state.counter >=3 ? <div className="loadMoreBox"><div className="loadMoreButton">LoadMore</div></div>:null }
+        { this.state.counter >=3 ? <div className="loadMoreBox"><div className="loadMoreButton" onClick={this.props.clickAddMore()}>加载更多</div></div>:null }
       </div>
     )
   }

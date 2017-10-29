@@ -9,12 +9,17 @@ class Topics extends Component {
   constructor(props){
     super(props);
     this.state = {
-      news: []
+      news: [],
+      lastCursor: 0
     }
   }
   
   componentDidMount(){
     getNews().then(news => this.setState({ news }))
+  }
+  
+  fetchData(){
+    
   }
   
   
