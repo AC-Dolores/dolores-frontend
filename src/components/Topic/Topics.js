@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import { uniqeMerge, minObjectByField } from '../../lib/arrayHelper'
 import ScrollableComponent from '../Common/ScrollableComponent';
 import {getTopics} from '../../Api/query';
-import TopicItem from './TopicItem/TopicItem'
-import './Topics.scss'
+import TopicItem from './TopicItem/TopicItem';
 
 class Topics extends Component {
   
@@ -22,22 +22,16 @@ class Topics extends Component {
   fetchData() {
     getTopics(this.state.lastCursor).then(topics => {
       const oldTopics = this.state.topics;
-      const lastCursor = topics[topics.length - 1].order;
-      this.setState({topics: [...oldTopics, ...topics], lastCursor})
+      const lastCursor = minObjectByField(topics, 'order').order;
+      this.setState({topics: uniqeMerge(oldTopics, topics, 'id'), lastCursor})
     })
   }
   
   render() {
     return (
-    <div className="main">
-      <div className="content">
         <ScrollableComponent scrollToBottom={this.fetchData} clickAddMore={this.fetchData}>
-          {this.state.topics.map((item, index) => <TopicItem key={`topic-${index}`} topicItem={item}/>)}
+          {this.state.topics.map((item) => <TopicItem key={`topic-${item.id}`} topicItem={item}/>)}
         </ScrollableComponent>
-      </div>
-    </div>
-      
-     
     )
   }
 }

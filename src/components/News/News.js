@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import ScrollableComponent from '../Common/ScrollableComponent';
 import NewsItem from './NewsItem/NewsItem';
 import { getNews } from '../../Api/query';
-
-import './News.scss';
+import { uniqeMerge, minObjectByField } from '../../lib/arrayHelper'
 
 class Topics extends Component {
   
@@ -11,25 +11,28 @@ class Topics extends Component {
     this.state = {
       news: [],
       lastCursor: 0
-    }
+    };
+    this.fetchData = this.fetchData.bind(this)
   }
   
   componentDidMount(){
-    getNews().then(news => this.setState({ news }))
+    this.fetchData()
   }
   
   fetchData(){
-    
+    getNews(this.state.lastCursor).then(news => {
+      const oldNews = this.state.news;
+      const lastCursor = minObjectByField(news, 'publishDate').publishDate;
+      this.setState({news: uniqeMerge(oldNews, news, 'id'), lastCursor})
+    })
   }
   
   
   render(){
     return (
-      <div className="main">
-        <div className="content">
-          {this.state.news.map((item) => <NewsItem key={`key-${item.id}`}  newsItem={item} />)}
-        </div>
-      </div>
+    <ScrollableComponent scrollToBottom={this.fetchData} clickAddMore={this.fetchData}>
+      {this.state.news.map((item) => <NewsItem key={`news-${item.id}`}  newsItem={item} />)}
+    </ScrollableComponent>
     )
   }
 }

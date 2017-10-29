@@ -26,10 +26,10 @@ class ScrollableComponent extends Component {
     const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
     const windowBottom = windowHeight + window.pageYOffset;
     if(windowBottom >= docHeight) {
+      const counter = this.state.counter + 1;
       this.setState({
-        counter: this.state.counter + 1
+        counter
       });
-      
       if(this.state.counter < 3){
         this.props.scrollToBottom();
       }
@@ -41,7 +41,7 @@ class ScrollableComponent extends Component {
     return (
       <div>
         { this.props.children }
-        { this.state.counter >=3 ? <div className="loadMoreBox"><div className="loadMoreButton" onClick={this.props.clickAddMore()}>加载更多</div></div>:null }
+        { this.state.counter >=3 ? <div className="loadMoreBox"><div className="loadMoreButton" onClick={this.props.clickAddMore}>加载更多</div></div>:null }
       </div>
     )
   }

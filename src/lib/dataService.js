@@ -11,7 +11,8 @@ export const extractNewsData = (data) => ({
   summary: data.summary ||'',
   title: data.title || '',
   url: data.url || '',
-  editor: data.authorName || ''
+  editor: data.authorName || '',
+  publishDate: Date.parse(data.publishDate) ||  Date.now()
 });
 
 export const extractTechData = (data) => ({
@@ -20,6 +21,7 @@ export const extractTechData = (data) => ({
   summary: data.summary ||'',
   title: data.title || '',
   url: data.url || '',
-  editor: data.authorName || ''
+  editor: data.authorName || '',
+  publishDate: Date.parse(data.publishDate) ||  Date.now()
 });
 

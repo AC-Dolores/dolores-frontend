@@ -1,30 +1,38 @@
 import React, { Component } from 'react';
 import TechItem from './TechItem/TechItem';
+import { uniqeMerge, minObjectByField } from '../../lib/arrayHelper'
+import ScrollableComponent from '../Common/ScrollableComponent';
 import { getTechNews } from '../../Api/query';
-
-import './Tech.scss';
 
 class Topics extends Component {
   
   constructor(props){
     super(props);
     this.state = {
-      techNews: []
-    }
+      techNews: [],
+      lastCursor: 0
+    };
+    this.fetchData = this.fetchData.bind(this);
   }
   
   componentDidMount(){
-    getTechNews().then(techNews => this.setState({ techNews }))
+    this.fetchData();
+  }
+  
+  fetchData(){
+    getTechNews(this.state.lastCursor).then(techNews => {
+      const oldTechNews = this.state.techNews;
+      const lastCursor = minObjectByField(techNews, 'publishDate').publishDate;
+      this.setState({techNews: uniqeMerge(oldTechNews, techNews, 'id'), lastCursor})
+    })
   }
   
   
   render(){
     return (
-      <div className="main">
-        <div className="content">
-          {this.state.techNews.map((item) => <TechItem key={`key-${item.id}`}  TechItem={item} />)}
-        </div>
-      </div>
+    <ScrollableComponent scrollToBottom={this.fetchData} clickAddMore={this.fetchData}>
+      {this.state.techNews.map((item) => <TechItem key={`key-${item.id}`}  TechItem={item} />)}
+    </ScrollableComponent>
     )
   }
 }
