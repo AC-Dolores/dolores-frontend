@@ -11,12 +11,12 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: pre-line;
-    height: 80px;
+    max-height: 80px;
     font-size: 15px;
     line-height: 178%; // 80 / 3 / 15 = 1.77777
   }
   .source {
-    padding: 10px;
+    padding: 10px 0px;
     color: #999;
     font-size: 13px;
   }
