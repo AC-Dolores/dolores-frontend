@@ -1,10 +1,18 @@
 .main {
   width: 960px;
   margin: 0 auto;
+  position: relative;
 
   .content {
     width: 625px;
     padding-top: 1px;
     margin-top: 14px;
+  }
+
+  .widgets {
+    width: 200px;
+    position: absolute;
+    right: 20px;
+    top: 10px;
   }
 }

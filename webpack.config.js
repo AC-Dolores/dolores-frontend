@@ -1,15 +1,15 @@
 const webpack = require('webpack');
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const extractSass = new ExtractTextPlugin({
-  filename: "style.css",
+  filename: 'style.css',
   allChunks: true,
 });
 
 let plugins = [
-  extractSass
+  extractSass,
 ];
 
 let devtool;
@@ -40,7 +40,7 @@ if (process.env.NODE_ENV === 'production') {
 
 module.exports = {
   entry: {
-    'app': path.join(__dirname, 'src', 'app-client.js'),
+    app: path.join(__dirname, 'src', 'app-client.js'),
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -50,19 +50,19 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.js$/,
-      exclude: /(node-modules)/,
+      exclude: /(node-modules|disposables)/,
       loader: ['babel-loader'],
     }, {
       test: /\.scss$/,
       use: extractSass.extract({
         use: [{
-          loader: "css-loader"
+          loader: 'css-loader',
         }, {
-          loader: "sass-loader"
+          loader: 'sass-loader',
         }],
         // use style-loader in development
-        fallback: "style-loader"
-      })
+        fallback: 'style-loader',
+      }),
     }],
   },
   plugins,

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Route } from 'react-router-dom';
 import './Header.scss';
 
-export  default () => <header>
+export default () => <header>
   <div className="header">
     <nav className="nav-bar">
       <a className="logo">AaronIsMe</a>
@@ -13,4 +13,4 @@ export  default () => <header>
       </div>
     </nav>
   </div>
-</header>
+</header>;
