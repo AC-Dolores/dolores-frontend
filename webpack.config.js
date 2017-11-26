@@ -43,7 +43,7 @@ module.exports = {
     app: path.join(__dirname, 'src', 'app-client.js'),
   },
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'docs'),
     filename: 'bundle.js',
   },
   devtool,
