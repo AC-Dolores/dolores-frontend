@@ -5,7 +5,7 @@ import './Header.scss';
 export default () => <header>
   <div className="header">
     <nav className="nav-bar">
-      <a className="logo">AaronIsMe</a>
+      <a className="logo">DOLORES</a>
       <div className="link-box">
         <Link to="/topics" className="link">热门话题</Link>
         <Link to="/news" className="link">科技动态</Link>
